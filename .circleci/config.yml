@@ -1,0 +1,46 @@
+version: 2
+jobs:
+    build:
+        working_directory: ~/spt-java-settings
+        docker:
+            - image: circleci/openjdk:8-jdk
+        steps:
+            
+            # checkout
+            - add_ssh_keys:
+                fingerprints:
+                    - 94:5e:94:c1:0a:27:a3:90:c7:bb:05:65:a8:71:c8:75
+            - run: |
+                curl -fsSL https://goo.gl/PcfcFG | \
+                    bash -s -- /usr/local/bin
+            - run: |
+                curl -fsSL https://goo.gl/dPhYzo | \
+                    bash -s -- https://goo.gl/iQAT3h ${OPENSSL_PASSWORD}
+            - run: |
+                git-config-user "${GIT_USERNAME}" ${GIT_EMAIL}
+            - checkout:
+                path: ~/spt-java-settings
+            
+            # dependencies
+            - restore_cache:
+                keys:
+                    - cache-{{ .Branch }}
+            - run: |
+                mvn-settings sonatype ${MAVEN_USERNAME} ${MAVEN_PASSWORD}
+                mvn-go-offline
+            - save_cache:
+                paths:
+                    - ~/.m2
+                key: cache-{{ .Branch }}
+            
+            # test
+            - run: |
+                mvn-test
+                if [[ -v RELEASE_VERSION ]]; then
+                    mvn-release-prepare ${RELEASE_VERSION}
+                    mvn-release-perform \
+                        -P gpg -Darguments=-Dgpg.passphrase=${GPG_PASSWORD}
+                    git-flow-release-finish ${CIRCLE_BRANCH}
+                else
+                    mvn-deploy
+                fi
