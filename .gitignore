@@ -1,0 +1,28 @@
+# --------------------------------------
+#
+# .gitignore
+#
+# --------------------------------------
+
+#
+# Ignore: IDE config files
+#
+
+.*
+
+#
+# Enable: Git config files
+#
+
+!.git*
+
+#
+# Ignore: Maven build files
+#
+
+target/
+pom.xml.*
+release.properties
+
+# --------------------------------------
+/bin/
