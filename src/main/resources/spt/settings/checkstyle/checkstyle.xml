@@ -256,7 +256,6 @@
 				org.eclipse,
 				org.hibernate,
 				org.jboss,
-				org.slf4j,
 				ch.qos,
 				freemarker,
 				io.netty"/>
@@ -378,7 +377,7 @@
 		<module name="ClassTypeParameterName"/>
 
 		<module name="ConstantName">
-			<property name="format" value="^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$|^logger$"/>
+			<property name="format" value="^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$|^logger$|^.+Logger$"/>
 		</module>
 
 		<module name="InterfaceTypeParameterName"/>
