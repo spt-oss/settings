@@ -13,7 +13,7 @@
 	<version>0.1.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<description>Java development settings</description>
+	<description>The Java development settings</description>
 	<url>https://github.com/spt-oss/settings</url>
 
 	<scm>
