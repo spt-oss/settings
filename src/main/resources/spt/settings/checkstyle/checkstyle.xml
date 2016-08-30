@@ -24,6 +24,7 @@
 		<property name="lineSeparator" value="lf"/>
 		<property name="fileExtensions" value="
 			default,
+			gitignore,
 			java,
 			md,
 			sql,
