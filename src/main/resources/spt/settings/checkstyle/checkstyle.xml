@@ -244,6 +244,9 @@
 		<module name="IllegalImport">
 			<property name="illegalPkgs"
 				value="
+				ch.qos,
+				freemarker,
+				io.netty,
 				java.util.logging,
 				com.google,
 				com.mysql,
@@ -251,9 +254,7 @@
 				org.eclipse,
 				org.hibernate,
 				org.jboss,
-				ch.qos,
-				freemarker,
-				io.netty"/>
+				sun"/>
 		</module>
 
 		<module name="ImportControl">
@@ -333,6 +334,8 @@
 			<property name="severity" value="ignore"/>
 		</module>
 
+		<module name="CommentsIndentation"/>
+
 		<module name="FileContentsHolder"/>
 
 		<module name="FinalParameters">
@@ -368,6 +371,8 @@
 		<module name="AbstractClassName">
 			<property name="format" value="^(Abstract|Base).+$"/>
 		</module>
+
+		<module name="CatchParameterName"/>
 
 		<module name="ClassTypeParameterName"/>
 
@@ -431,6 +436,7 @@
 
 		<module name="EmptyLineSeparator">
 			<property name="allowMultipleEmptyLines" value="false"/>
+			<property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/>
 		</module>
 
 		<module name="GenericWhitespace">
@@ -451,6 +457,8 @@
 		<module name="SeparatorWrap">
 			<property name="severity" value="ignore"/>
 		</module>
+
+		<module name="SingleSpaceSeparator"/>
 
 		<module name="TypecastParenPad"/>
 		<module name="WhitespaceAfter"/>
