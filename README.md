@@ -1,6 +1,6 @@
 # Settings
 
-The Java development settings
+Java development settings
 
 ## License
 
