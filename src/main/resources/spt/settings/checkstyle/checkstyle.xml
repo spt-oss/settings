@@ -334,7 +334,9 @@
 			<property name="severity" value="ignore"/>
 		</module>
 
-		<module name="CommentsIndentation"/>
+		<module name="CommentsIndentation">
+			<property name="severity" value="ignore"/>
+		</module>
 
 		<module name="FileContentsHolder"/>
 
@@ -372,7 +374,9 @@
 			<property name="format" value="^(Abstract|Base).+$"/>
 		</module>
 
-		<module name="CatchParameterName"/>
+		<module name="CatchParameterName">
+			<property name="severity" value="ignore"/>
+		</module>
 
 		<module name="ClassTypeParameterName"/>
 
