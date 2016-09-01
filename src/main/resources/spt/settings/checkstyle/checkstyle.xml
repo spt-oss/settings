@@ -372,9 +372,10 @@
 			<property name="format" value="^(Abstract|Base).+$"/>
 		</module>
 
-		<module name="CatchParameterName">
-			<property name="severity" value="ignore"/>
-		</module>
+		<!-- TODO Checkstyle 7 -->
+		<!--<module name="CatchParameterName"> -->
+		<!--<property name="severity" value="ignore"/> -->
+		<!--</module> -->
 
 		<module name="ClassTypeParameterName"/>
 
@@ -438,7 +439,8 @@
 
 		<module name="EmptyLineSeparator">
 			<property name="allowMultipleEmptyLines" value="false"/>
-			<property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/>
+			<!-- TODO Checkstyle 7 -->
+			<!-- <property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/> -->
 		</module>
 
 		<module name="GenericWhitespace">
@@ -460,7 +462,8 @@
 			<property name="severity" value="ignore"/>
 		</module>
 
-		<module name="SingleSpaceSeparator"/>
+		<!-- TODO Checkstyle 7 -->
+		<!-- <module name="SingleSpaceSeparator"/> -->
 
 		<module name="TypecastParenPad"/>
 		<module name="WhitespaceAfter"/>
