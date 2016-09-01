@@ -225,8 +225,7 @@
 		<module name="AvoidStarImport"/>
 
 		<module name="AvoidStaticImport">
-			<property name="excludes"
-				value="
+			<property name="excludes" value="
 				org.junit.Assert.*,
 				org.hamcrest.Matchers.*,
 				org.hamcrest.CoreMatchers.*,
@@ -242,8 +241,7 @@
 		</module>
 
 		<module name="IllegalImport">
-			<property name="illegalPkgs"
-				value="
+			<property name="illegalPkgs" value="
 				ch.qos,
 				freemarker,
 				io.netty,
