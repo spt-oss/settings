@@ -4,7 +4,7 @@ Java development settings
 
 ## How to use
 
-* Clone repository and import settings to your Eclipse.
+* Clone the repository and import settings to your Eclipse.
 
 	```
 	src/main/resources
