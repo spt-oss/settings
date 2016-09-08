@@ -7,7 +7,7 @@ Java development settings
 * Clone the repository and import settings to your Eclipse.
 
 	```
-	src/main/resources
+	src/main/resources/
 		spt/
 			settings/
 				checkstyle/			# Checkstyle settings
