@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.github.spt-oss</groupId>
 		<artifactId>parent</artifactId>
-		<version>0.1.7</version>
+		<version>0.1.8</version>
 	</parent>
 
 	<artifactId>settings</artifactId>
@@ -32,6 +32,18 @@
 			<url>https://oss.sonatype.org/content/groups/staging</url>
 		</repository>
 	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<configuration>
+					<configLocation>src/main/resources/spt/settings/checkstyle/checkstyle.xml</configLocation>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 	<profiles>
 		<profile>
