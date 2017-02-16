@@ -226,11 +226,13 @@
 
 		<module name="AvoidStaticImport">
 			<property name="excludes" value="
-				org.junit.Assert.*,
+				org.junit.Assert.fail,
+				org.hamcrest.MatcherAssert.*,
 				org.hamcrest.Matchers.*,
-				org.hamcrest.CoreMatchers.*,
-				org.mockito.Mockito.*,
+				org.mockito.AdditionalAnswers.*,
+				org.mockito.AdditionalMatchers.*,
 				org.mockito.Matchers.*,
+				org.mockito.Mockito.*,
 				org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*,
 				org.springframework.test.web.servlet.result.MockMvcResultMatchers.*,
 				org.springframework.test.web.servlet.setup.MockMvcBuilders.*"/>
