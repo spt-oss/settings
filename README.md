@@ -17,7 +17,7 @@
 					project/
 	```
 
-1. Otherwise, add the dependency in your POM ( [Maven Central](https://repo1.maven.org/maven2/com/github/spt-oss/settings/) ).
+1. Or you can add the dependency in your POM ( [Maven Central](https://repo1.maven.org/maven2/com/github/spt-oss/settings/) ).
 
 	```xml
 	<plugin>
