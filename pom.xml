@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>settings</artifactId>
-	<version>0.1.10</version>
+	<version>0.1.11-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<description>Java development settings</description>
@@ -19,7 +19,7 @@
 	<scm>
 		<url>https://github.com/spt-oss/settings/tree/master</url>
 		<connection>scm:git:git@settings.spt-oss.github.com:spt-oss/settings.git</connection>
-		<tag>0.1.10</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<repositories>
