@@ -1,10 +1,10 @@
 # Settings
 
-Java development settings
+* Java development settings
 
 ## How to use
 
-* Clone the repository and import settings to your Eclipse.
+1. Clone the repository and import settings to your Eclipse.
 
 	```
 	src/main/resources/
@@ -17,7 +17,7 @@ Java development settings
 					project/
 	```
 
-* Otherwise, add the dependency in your POM ( [Maven Central](https://repo1.maven.org/maven2/com/github/spt-oss/settings/) ).
+1. Or you can add the dependency in your POM ( [Maven Central](https://repo1.maven.org/maven2/com/github/spt-oss/settings/) ).
 
 	```xml
 	<plugin>
