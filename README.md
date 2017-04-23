@@ -1,4 +1,4 @@
-# Java Settings
+# Java Settings [![CircleCI](https://circleci.com/gh/spt-oss/java-settings.svg?style=svg&circle-token=833a5ace2d3bd1ca42536b456ba46d17e341dd76)](https://circleci.com/gh/spt-oss/java-settings)
 
 * Java development settings
 
