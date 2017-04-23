@@ -7,7 +7,7 @@ machine:
 dependencies:
     post:
         - |
-            mvn clean:help resources:help compiler:help surefire:help jar:help source:help javadoc:help gpg:help install:help release:help
+            mvn clean:help resources:help compiler:help surefire:help jar:help javadoc:help gpg:help install:help release:help
 
 test:
     post:
