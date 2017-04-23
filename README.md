@@ -2,7 +2,7 @@
 
 * Java development settings
 
-## How to use 1
+## How to use
 
 * Clone the repository and import the settings into your Eclipse.
 
@@ -17,8 +17,6 @@
 					project/
 	```
 
-## How to use 2
-
 * You can add the dependency in your POM ( [Maven Central](https://repo1.maven.org/maven2/com/github/spt-oss/java-settings/) ).
 
 	```xml
@@ -29,6 +27,11 @@
 			<configLocation>spt/settings/checkstyle/checkstyle.xml</configLocation>
 		</configuration>
 		<dependencies>
+			<dependency>
+				<groupId>com.puppycrawl.tools</groupId>
+				<artifactId>checkstyle</artifactId>
+				<version>X.X.X</version>
+			</dependency>
 			<dependency>
 				<groupId>com.github.spt-oss</groupId>
 				<artifactId>java-settings</artifactId>
