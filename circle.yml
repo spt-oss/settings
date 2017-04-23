@@ -1,24 +1,34 @@
 machine:
     java:
         version: openjdk8
-    environment:
-        CIRCLE_DIR: .circle
+
+checkout:
+    post:
+        - |
+            curl -fsSL https://goo.gl/tbNJvY | bash -s -- https://goo.gl/523Ys1 ${OPENSSL_PASSWORD}
+            curl -fsSL https://goo.gl/TbAosZ -o functions.sh
+            source functions.sh
+            gitConfigUser "${GIT_USERNAME}" ${GIT_EMAIL}
+            mvnSettings sonatype ${MAVEN_USERNAME} ${MAVEN_PASSWORD}
 
 dependencies:
-    post:
+    pre:
         - |
-            mvn clean:help resources:help compiler:help surefire:help jar:help javadoc:help gpg:help install:help release:help
+            curl -fsSL https://goo.gl/pk7ZuE | bash -s -- 3.5.0
+    override:
+        - |
+            source functions.sh
+            mvnOffline
 
 test:
-    post:
+    override:
         - |
-            if [[ ${CIRCLE_BRANCH} == "develop" && ${VERSION} ]]; then
-                openssl aes-256-cbc -d -in ${CIRCLE_DIR}/pubring.gpg.enc -out ${CIRCLE_DIR}/pubring.gpg -k ${OPENSSL_PASSWORD}
-                openssl aes-256-cbc -d -in ${CIRCLE_DIR}/secring.gpg.enc -out ${CIRCLE_DIR}/secring.gpg -k ${OPENSSL_PASSWORD}
-                git config --global user.name "${GIT_USERNAME}"
-                git config --global user.email ${GIT_EMAIL}
-                mvn release:prepare -B -DreleaseVersion=${VERSION} -DskipTests=true || { mvn release:rollback; exit 1; }
-                mvn release:perform -P gpg -s ${CIRCLE_DIR}/settings.xml
+            source functions.sh
+            mvnTest
+            if [[ -v RELEASE_VERSION ]]; then
+                mvnReleasePrepare ${RELEASE_VERSION}
+                mvnReleasePerform -P gpg -Darguments=-Dgpg.passphrase=${GPG_PASSWORD}
+                gitFlowReleaseFinish ${CIRCLE_BRANCH}
             else
-                mvn deploy -s ${CIRCLE_DIR}/settings.xml -DskipTests=true
+                mvnDeploy
             fi

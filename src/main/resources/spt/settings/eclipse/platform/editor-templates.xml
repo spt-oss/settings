@@ -7,7 +7,7 @@
 	${cursor}
 }</template>
 
-<template autoinsert="false" context="java" deleted="false" description="@checkstyle:ok" enabled="true" name="checkstyle:ok">// @checkstyle:ok</template>
+<template autoinsert="false" context="java" deleted="false" description="@checkstyle:ignore" enabled="true" name="checkstyle:ignore">// TODO @checkstyle:ignore</template>
 
 <template autoinsert="false" context="java-statements" deleted="false" description="do ... while ..." enabled="true" id="org.eclipse.jdt.ui.templates.do" name="do">do {
 	
@@ -54,7 +54,15 @@ else {
 	/* NOP */
 }</template>
 
-<template autoinsert="false" context="java-members" deleted="false" description="private static final org.slf4j.Logger ..." enabled="true" name="logger">private static final ${loggerType:newType(org.slf4j.Logger)} logger = ${loggerFactoryType:newType(org.slf4j.LoggerFactory)}.getLogger(LoggingType.class);${cursor}</template>
+<template autoinsert="false" context="java-members" deleted="false" description="private static final org.slf4j.plus.ExceptionLogger ..." enabled="true" name="logger">/**
+ * {@link ExceptionLogger}
+ */
+private static final ${loggerType:newType(org.slf4j.plus.ExceptionLogger)} exceptionLogger = ${loggerFactoryType:newType(org.slf4j.plus.ExceptionLoggerFactory)}.getLogger();${cursor}</template>
+
+<template autoinsert="false" context="java-members" deleted="false" description="private static final org.slf4j.Logger ..." enabled="true" name="logger">/**
+ * {@link Logger}
+ */
+private static final ${loggerType:newType(org.slf4j.Logger)} logger = ${loggerFactoryType:newType(org.slf4j.CustomLoggerFactory)}.getLogger();${cursor}</template>
 
 <template autoinsert="false" context="java-members" deleted="false" description="public static void main ..." enabled="true" id="org.eclipse.jdt.ui.templates.main" name="main">public static void main(String... args) {
 	

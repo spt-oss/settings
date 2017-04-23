@@ -8,7 +8,7 @@
 	<!-- Filter -->
 
 	<module name="SuppressWithNearbyCommentFilter">
-		<property name="commentFormat" value="@checkstyle\:ok"/>
+		<property name="commentFormat" value="TODO @checkstyle\:ignore"/>
 		<property name="checkC" value="false"/>
 	</module>
 
@@ -148,15 +148,11 @@
 		<module name="IllegalToken">
 			<property name="tokens" value="
 				DO_WHILE,
-				DOUBLE_COLON,
-				EOF,
 				LABELED_STAT,
-				LAMBDA,
 				LITERAL_ASSERT,
 				LITERAL_DO,
 				LITERAL_SWITCH,
-				LITERAL_WHILE,
-				METHOD_REF"/>
+				LITERAL_WHILE"/>
 		</module>
 
 		<module name="IllegalTokenText"/>
@@ -226,6 +222,7 @@
 
 		<module name="AvoidStaticImport">
 			<property name="excludes" value="
+				org.assertj.core.api.Assertions.assertThat,
 				org.junit.Assert.fail,
 				org.hamcrest.MatcherAssert.*,
 				org.hamcrest.Matchers.*,
@@ -371,13 +368,12 @@
 		</module>
 
 		<module name="AbstractClassName">
-			<property name="format" value="^(Abstract|Base).+$"/>
+			<property name="format" value="^Abstract.+$|^.+Utils$"/>
 		</module>
 
-		<!-- TODO Checkstyle 7 -->
-		<!--<module name="CatchParameterName"> -->
-		<!--<property name="severity" value="ignore"/> -->
-		<!--</module> -->
+		<module name="CatchParameterName">
+			<property name="severity" value="ignore"/>
+		</module>
 
 		<module name="ClassTypeParameterName"/>
 
@@ -397,7 +393,7 @@
 		<module name="MethodTypeParameterName"/>
 
 		<module name="PackageName">
-			<property name="format" value="^[a-z_][a-z0-9_]*(\.[a-z_][a-z0-9_]*)*$"/>
+			<property name="format" value="^[a-z][a-z0-9]*(\.[a-z][a-z0-9]*)*$"/>
 		</module>
 
 		<module name="ParameterName"/>
@@ -441,8 +437,7 @@
 
 		<module name="EmptyLineSeparator">
 			<property name="allowMultipleEmptyLines" value="false"/>
-			<!-- TODO Checkstyle 7 -->
-			<!-- <property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/> -->
+			<property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/>
 		</module>
 
 		<module name="GenericWhitespace">
@@ -464,8 +459,7 @@
 			<property name="severity" value="ignore"/>
 		</module>
 
-		<!-- TODO Checkstyle 7 -->
-		<!-- <module name="SingleSpaceSeparator"/> -->
+		<module name="SingleSpaceSeparator"/>
 
 		<module name="TypecastParenPad"/>
 		<module name="WhitespaceAfter"/>
