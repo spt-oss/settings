@@ -1,10 +1,10 @@
-# Settings
+# Java Settings
 
 * Java development settings
 
 ## How to use
 
-1. Clone the repository and import settings to your Eclipse.
+* Clone the repository and import the settings into your Eclipse.
 
 	```
 	src/main/resources/
@@ -17,7 +17,7 @@
 					project/
 	```
 
-1. Or you can add the dependency in your POM ( [Maven Central](https://repo1.maven.org/maven2/com/github/spt-oss/settings/) ).
+* You can add the dependency in your POM ( [Maven Central](https://repo1.maven.org/maven2/com/github/spt-oss/java-settings/) ).
 
 	```xml
 	<plugin>
@@ -28,8 +28,13 @@
 		</configuration>
 		<dependencies>
 			<dependency>
+				<groupId>com.puppycrawl.tools</groupId>
+				<artifactId>checkstyle</artifactId>
+				<version>X.X.X</version>
+			</dependency>
+			<dependency>
 				<groupId>com.github.spt-oss</groupId>
-				<artifactId>settings</artifactId>
+				<artifactId>java-settings</artifactId>
 				<version>X.X.X</version>
 			</dependency>
 		</dependencies>

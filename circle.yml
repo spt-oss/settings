@@ -1,0 +1,24 @@
+machine:
+    java:
+        version: openjdk8
+    environment:
+        CIRCLE_DIR: .circle
+
+dependencies:
+    post:
+        - |
+            mvn clean:help resources:help compiler:help surefire:help jar:help source:help javadoc:help gpg:help install:help release:help
+
+test:
+    post:
+        - |
+            if [[ ${CIRCLE_BRANCH} == "develop" && ${VERSION} ]]; then
+                openssl aes-256-cbc -d -in ${CIRCLE_DIR}/pubring.gpg.enc -out ${CIRCLE_DIR}/pubring.gpg -k ${OPENSSL_PASSWORD}
+                openssl aes-256-cbc -d -in ${CIRCLE_DIR}/secring.gpg.enc -out ${CIRCLE_DIR}/secring.gpg -k ${OPENSSL_PASSWORD}
+                git config --global user.name "${GIT_USERNAME}"
+                git config --global user.email ${GIT_EMAIL}
+                mvn release:prepare -B -DreleaseVersion=${VERSION} -DskipTests=true || { mvn release:rollback; exit 1; }
+                mvn release:perform -P gpg -s ${CIRCLE_DIR}/settings.xml
+            else
+                mvn deploy -s ${CIRCLE_DIR}/settings.xml -DskipTests=true
+            fi
