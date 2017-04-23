@@ -7,7 +7,7 @@ machine:
 dependencies:
     post:
         - |
-            mvn clean failsafe:help install:help release:clean
+            mvn clean:help resources:help compiler:help surefire:help jar:help install:help release:help
 
 test:
     post:
