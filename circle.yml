@@ -3,10 +3,6 @@ machine:
         version: openjdk8
     environment:
         CIRCLE_DIR: .circle
-    post:
-        - |
-            git config --global user.name "${GIT_USERNAME}"
-            git config --global user.email ${GIT_EMAIL}
 
 dependencies:
     post:
@@ -19,6 +15,8 @@ test:
             if [[ ${CIRCLE_BRANCH} == "develop" && ${VERSION} ]]; then
                 openssl aes-256-cbc -d -pass pass:${OPENSSL_PASSWORD} -in ${CIRCLE_DIR}/pubring.gpg.enc -out ${CIRCLE_DIR}/pubring.gpg
                 openssl aes-256-cbc -d -pass pass:${OPENSSL_PASSWORD} -in ${CIRCLE_DIR}/secring.gpg.enc -out ${CIRCLE_DIR}/secring.gpg
+                git config --global user.name "${GIT_USERNAME}"
+                git config --global user.email ${GIT_EMAIL}
                 mvn release:prepare -B -DreleaseVersion=${VERSION} -DskipTests=true || { mvn release:rollback; exit 1; }
                 mvn release:perform -P gpg -s ${CIRCLE_DIR}/settings.xml
             else
