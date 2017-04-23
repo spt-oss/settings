@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>java-settings</artifactId>
-	<version>0.1.10-SNAPSHOT</version>
+	<version>0.1.11-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<description>Java development settings</description>
