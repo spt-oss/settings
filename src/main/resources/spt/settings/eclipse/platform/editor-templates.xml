@@ -56,8 +56,6 @@ else {
 
 <template autoinsert="false" context="java-members" deleted="false" description="private static final org.slf4j.Logger ..." enabled="true" name="logger">private static final ${loggerType:newType(org.slf4j.Logger)} logger = ${loggerFactoryType:newType(org.slf4j.LoggerFactory)}.getLogger(LoggingType.class);${cursor}</template>
 
-<template autoinsert="false" context="java-members" deleted="false" description="private static final spt.log.Logger ..." enabled="true" name="logger">private static final ${loggerType:newType(spt.log.Logger)} logger = ${loggerFactoryType:newType(spt.log.Logger)}.currentClass();${cursor}</template>
-
 <template autoinsert="false" context="java-members" deleted="false" description="public static void main ..." enabled="true" id="org.eclipse.jdt.ui.templates.main" name="main">public static void main(String... args) {
 	
 	${cursor}
