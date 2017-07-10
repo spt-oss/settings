@@ -1,23 +1,23 @@
-# Java Settings [![CircleCI](https://circleci.com/gh/spt-oss/java-settings.svg?style=svg&circle-token=833a5ace2d3bd1ca42536b456ba46d17e341dd76)](https://circleci.com/gh/spt-oss/java-settings)
+# SPT Java Settings [![CircleCI](https://circleci.com/gh/spt-oss/spt-java-settings.svg?style=svg&circle-token=833a5ace2d3bd1ca42536b456ba46d17e341dd76)](https://circleci.com/gh/spt-oss/spt-java-settings)
 
-* Java development settings
+* Java settings for SPT projects: Checkstyle, Eclipse, etc.
 
-## How to use
+## Usage
 
 * Clone the repository and import the settings into your Eclipse.
 
-	```
+	```bash
 	src/main/resources/
-		spt/
-			settings/
-				checkstyle/			# Checkstyle settings
-					checkstyle.xml
-				eclipse/			# Eclipse settings
-					platform/
-					project/
+	    spt/
+	        settings/
+	        checkstyle/
+	            checkstyle.xml
+	        eclipse/
+	            platform/
+	            project/
 	```
 
-* You can add the dependency in your POM ( [Maven Central](https://repo1.maven.org/maven2/com/github/spt-oss/java-settings/) ).
+* You can add the dependency in your POM ( [Maven Central](https://repo1.maven.org/maven2/com/github/spt-oss/spt-java-settings/) ).
 
 	```xml
 	<plugin>
@@ -34,7 +34,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.spt-oss</groupId>
-				<artifactId>java-settings</artifactId>
+				<artifactId>spt-java-settings</artifactId>
 				<version>X.X.X</version>
 			</dependency>
 		</dependencies>

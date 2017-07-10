@@ -1,6 +1,5 @@
-.*
-!.circle
-!.gitignore
-!.gitkeep
+.checkstyle
+.classpath
+.project
 
 target
