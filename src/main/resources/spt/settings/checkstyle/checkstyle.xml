@@ -23,7 +23,6 @@
 	<module name="NewlineAtEndOfFile">
 		<property name="lineSeparator" value="lf"/>
 		<property name="fileExtensions" value="
-			default,
 			gitignore,
 			java,
 			md,
@@ -224,8 +223,6 @@
 			<property name="excludes" value="
 				org.assertj.core.api.Assertions.assertThat,
 				org.junit.Assert.fail,
-				org.hamcrest.MatcherAssert.*,
-				org.hamcrest.Matchers.*,
 				org.mockito.AdditionalAnswers.*,
 				org.mockito.AdditionalMatchers.*,
 				org.mockito.Matchers.*,
