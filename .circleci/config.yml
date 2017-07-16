@@ -1,0 +1,42 @@
+version: 2
+jobs:
+    build:
+        working_directory: ~/spt-maven-parent
+        docker:
+            - image: circleci/openjdk:8-jdk
+        steps:
+            
+            # checkout
+            - run: |
+                curl -fsSL https://goo.gl/MWJq35 -o ~/functions.sh
+            - run: |
+                curl -fsSL https://goo.gl/466QxR | bash -s -- https://goo.gl/iQAT3h ${OPENSSL_PASSWORD}
+            - run: |
+                source ~/functions.sh
+                git-config-user "${GIT_USERNAME}" ${GIT_EMAIL}
+                mvn-settings sonatype ${MAVEN_USERNAME} ${MAVEN_PASSWORD}
+            - checkout
+            
+            # dependencies
+            - restore_cache:
+                keys:
+                    - cache-{{ .Branch }}
+            - run: |
+                source ~/functions.sh
+                mvn-go-offline
+            - save_cache:
+                paths:
+                    - ~/.m2
+                key: cache-{{ .Branch }}
+            
+            # test
+            - run: |
+                source ~/functions.sh
+                mvn-test
+                if [[ -v RELEASE_VERSION ]]; then
+                    mvn-release-prepare ${RELEASE_VERSION}
+                    mvn-release-perform -P gpg -Darguments=-Dgpg.passphrase=${GPG_PASSWORD}
+                    git-flow-release-finish ${CIRCLE_BRANCH}
+                else
+                    mvn-deploy
+                fi

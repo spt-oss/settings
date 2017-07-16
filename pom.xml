@@ -13,7 +13,6 @@
 	<version>0.2.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>SPT Java settings</name>
 	<description>Java settings for SPT projects</description>
 	<url>https://github.com/spt-oss/spt-java-settings</url>
 	<inceptionYear>2016</inceptionYear>

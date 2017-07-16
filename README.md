@@ -4,20 +4,24 @@
 
 ## Usage
 
+### Use in Eclipse
+
 * Clone the repository and import the settings into your Eclipse.
 
 	```bash
 	src/main/resources/
 	    spt/
 	        settings/
-	        checkstyle/
-	            checkstyle.xml
-	        eclipse/
-	            platform/
-	            project/
+	            checkstyle/
+	                checkstyle.xml # Checkstyle
+	            eclipse/
+	                platform/      # Eclipse platform
+	                project/       # Eclipse projects
 	```
 
-* You can add the dependency in your POM ( [Maven Central](https://repo1.maven.org/maven2/com/github/spt-oss/spt-java-settings/) ).
+### Use in Maven
+
+* Add the dependency in your POM ( [Maven Central](https://repo1.maven.org/maven2/com/github/spt-oss/spt-java-settings/) ).
 
 	```xml
 	<plugin>
