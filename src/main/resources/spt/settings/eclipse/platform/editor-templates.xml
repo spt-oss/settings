@@ -69,6 +69,8 @@ private static final ${loggerType:newType(org.slf4j.XLogger)} logger = ${loggerF
 	${cursor}
 }</template>
 
+<template autoinsert="false" context="java" deleted="false" description="/* NOP */" enabled="true" name="nop">/* NOP */</template>
+
 <template autoinsert="false" context="javadoc" deleted="false" description="{@code null}" enabled="true" id="org.eclipse.jdt.ui.templates.code_tag_null" name="null">{@code null}</template>
 
 <template autoinsert="false" context="java-members" deleted="false" description="private ..." enabled="true" id="org.eclipse.jdt.ui.templates.private_method" name="private">private ${return_type} ${name}(${}) {
