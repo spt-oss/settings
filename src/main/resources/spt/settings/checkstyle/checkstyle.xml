@@ -5,13 +5,6 @@
 
 	<property name="severity" value="warning"/>
 
-	<!-- Filter -->
-
-	<module name="SuppressWithNearbyCommentFilter">
-		<property name="commentFormat" value="TODO @checkstyle\:ignore"/>
-		<property name="checkC" value="false"/>
-	</module>
-
 	<!-- Javadoc Comments -->
 
 	<module name="JavadocPackage">
@@ -53,6 +46,13 @@
 	</module>
 
 	<module name="TreeWalker">
+
+		<!-- Filter -->
+
+		<module name="SuppressWithNearbyCommentFilter">
+			<property name="commentFormat" value="TODO @checkstyle\:ignore"/>
+			<property name="checkC" value="false"/>
+		</module>
 
 		<!-- Annotations -->
 
