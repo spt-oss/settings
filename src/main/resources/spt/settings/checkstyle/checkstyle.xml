@@ -333,8 +333,6 @@
 			<property name="severity" value="ignore"/>
 		</module>
 
-		<module name="FileContentsHolder"/>
-
 		<module name="FinalParameters">
 			<property name="severity" value="ignore"/>
 		</module>
