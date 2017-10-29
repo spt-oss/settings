@@ -3,7 +3,7 @@
 [![circleci](https://img.shields.io/badge/circleci-spt--java--settings-brightgreen.svg)](https://circleci.com/gh/spt-oss/spt-java-settings)
 [![maven central](https://img.shields.io/badge/maven_central-spt--java--settings-blue.svg)](https://mvnrepository.com/artifact/com.github.spt-oss/spt-java-settings)
 
-* Java settings for SPT projects
+* Custom settings for Java projects
 * Checkstyle, Eclipse, etc.
 
 ## Usage

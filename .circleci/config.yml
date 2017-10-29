@@ -15,7 +15,7 @@ jobs:
                     bash -s -- /usr/local/bin
             - run: |
                 curl -fsSL https://goo.gl/dPhYzo | \
-                    bash -s -- https://goo.gl/iQAT3h ${OPENSSL_PASSWORD}
+                    bash -s -- https://goo.gl/H7cUzz ${OPENSSL_PASSWORD}
             - run: |
                 git-config-user "${GIT_USERNAME}" ${GIT_EMAIL}
             - checkout:
@@ -27,6 +27,7 @@ jobs:
                     - cache-{{ .Branch }}
             - run: |
                 mvn-settings sonatype ${MAVEN_USERNAME} ${MAVEN_PASSWORD}
+            - run: |
                 mvn-go-offline
             - save_cache:
                 paths:
@@ -36,11 +37,6 @@ jobs:
             # test
             - run: |
                 mvn-test
-                if [[ -v RELEASE_VERSION ]]; then
-                    mvn-release-prepare ${RELEASE_VERSION}
-                    mvn-release-perform \
-                        -P gpg -Darguments=-Dgpg.passphrase=${GPG_PASSWORD}
-                    git-flow-release-finish ${CIRCLE_BRANCH}
-                else
-                    mvn-deploy
-                fi
+            - run: |
+                curl -fsSL https://goo.gl/4wBrnV | \
+                    bash -s -- ${CIRCLE_BRANCH} ${GPG_PASSWORD} ${VERSION:-}

@@ -5,15 +5,15 @@
 
 	<parent>
 		<groupId>com.github.spt-oss</groupId>
-		<artifactId>spt-maven-parent</artifactId>
-		<version>1.5.7.1</version>
+		<artifactId>spt-java-parent</artifactId>
+		<version>1.5.8.0</version>
 	</parent>
 
 	<artifactId>spt-java-settings</artifactId>
 	<version>0.1.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<description>Java settings for SPT projects</description>
+	<description>Custom settings for Java projects</description>
 	<url>https://github.com/spt-oss/spt-java-settings</url>
 	<inceptionYear>2016</inceptionYear>
 
