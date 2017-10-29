@@ -54,13 +54,6 @@
 
 	<module name="TreeWalker">
 
-		<!-- Filter -->
-
-		<module name="SuppressWithNearbyCommentFilter">
-			<property name="commentFormat" value="TODO @checkstyle\:ignore"/>
-			<property name="checkC" value="false"/>
-		</module>
-
 		<!-- Annotations -->
 
 		<module name="AnnotationLocation">
