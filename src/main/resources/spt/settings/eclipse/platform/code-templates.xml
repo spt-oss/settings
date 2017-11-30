@@ -4,13 +4,11 @@
 
 <template autoinsert="false" context="gettercomment_context" deleted="false" description="Getter Comment" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.gettercomment" name="gettercomment">/**
  * TODO Getter
- * 
  * @return TODO Value
  */</template>
 
 <template autoinsert="false" context="settercomment_context" deleted="false" description="Setter Comment" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.settercomment" name="settercomment">/**
  * TODO Setter
- * 
  * @param ${param} TODO Value
  */</template>
 
