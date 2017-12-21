@@ -226,6 +226,7 @@
 				org.junit.Assert.fail,
 				org.mockito.AdditionalAnswers.*,
 				org.mockito.AdditionalMatchers.*,
+				org.mockito.ArgumentMatchers.*,
 				org.mockito.Matchers.*,
 				org.mockito.Mockito.*,
 				org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*,
@@ -248,6 +249,7 @@
 				org.apache,
 				org.eclipse,
 				org.hibernate,
+				org.jadira,
 				org.jboss,
 				sun"/>
 		</module>
