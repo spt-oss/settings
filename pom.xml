@@ -32,6 +32,11 @@
 			<id>sonatype</id>
 			<url>https://oss.sonatype.org/content/groups/staging</url>
 		</repository>
+		<!-- TODO remove -->
+		<repository>
+			<id>spring-milestones</id>
+			<url>https://repo.spring.io/libs-milestone</url>
+		</repository>
 	</repositories>
 
 	<profiles>
