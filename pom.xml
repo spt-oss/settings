@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>spt-java-settings</artifactId>
-	<version>0.2.0-SNAPSHOT</version>
+	<version>1.8.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<description>Custom settings for Java projects</description>
