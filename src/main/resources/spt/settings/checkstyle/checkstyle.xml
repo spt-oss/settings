@@ -374,7 +374,7 @@
 		<module name="ClassTypeParameterName"/>
 
 		<module name="ConstantName">
-			<property name="format" value="^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$|^logger$|^.+Logger$"/>
+			<property name="format" value="^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$|^logger$"/>
 		</module>
 
 		<module name="InterfaceTypeParameterName"/>
