@@ -365,9 +365,7 @@
 			<property name="ignoreStatic" value="false"/>
 		</module>
 
-		<module name="AbstractClassName">
-			<property name="format" value="^Abstract.+|.+able$"/>
-		</module>
+		<module name="AbstractClassName"/>
 
 		<module name="CatchParameterName">
 			<property name="severity" value="ignore"/>
