@@ -1,27 +1,18 @@
 version: 2
+
+settings: &settings
+    working_directory: ~/spt-cloud
+    docker:
+        - image: circleci/openjdk:8-jdk
+
 jobs:
     build:
-        working_directory: ~/spt-java-settings
-        docker:
-            - image: circleci/openjdk:8-jdk
+        <<: *settings
         steps:
-            
-            # checkout
-            - add_ssh_keys:
-                fingerprints:
-                    - 94:5e:94:c1:0a:27:a3:90:c7:bb:05:65:a8:71:c8:75
-            - run: |
-                curl -fsSL https://goo.gl/PcfcFG | \
-                    bash -s -- /usr/local/bin
-            - run: |
-                curl -fsSL https://goo.gl/dPhYzo | \
-                    bash -s -- https://goo.gl/H7cUzz ${OPENSSL_PASSWORD}
-            - run: |
-                git-config-user "${GIT_USERNAME}" ${GIT_EMAIL}
             - checkout:
-                path: ~/spt-java-settings
-            
-            # dependencies
+                path: ~/spt-cloud
+            - run: |
+                curl -fsSL https://git.io/vpRJr | bash -s -- /usr/local/bin
             - restore_cache:
                 keys:
                     - cache-{{ .Branch }}
@@ -33,10 +24,13 @@ jobs:
                 paths:
                     - ~/.m2
                 key: cache-{{ .Branch }}
-            
-            # test
             - run: |
                 mvn-test
             - run: |
-                curl -fsSL https://goo.gl/4wBrnV | \
+                git-config-user "${GIT_USERNAME}" ${GIT_EMAIL}
+            - run: |
+                curl -fsSL https://git.io/vpDIq | \
+                    bash -s -- https://git.io/vpDY5 ${OPENSSL_PASSWORD}
+            - run: |
+                curl -fsSL https://git.io/vpDY9 | \
                     bash -s -- ${CIRCLE_BRANCH} ${GPG_PASSWORD} ${VERSION:-}

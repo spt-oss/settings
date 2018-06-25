@@ -1,53 +1,14 @@
-# SPT Java Settings
+# SPT Cloud
 
-[![circleci](https://img.shields.io/badge/circleci-spt--java--settings-brightgreen.svg)](https://circleci.com/gh/spt-oss/spt-java-settings)
-[![maven central](https://img.shields.io/badge/maven_central-spt--java--settings-blue.svg)](https://mvnrepository.com/artifact/com.github.spt-oss/spt-java-settings)
+[![circleci](https://img.shields.io/badge/circleci-spt--cloud-brightgreen.svg)](https://circleci.com/gh/spt-oss/spt-cloud)
+[![maven central](https://img.shields.io/badge/maven_central-spt--cloud-blue.svg)](https://mvnrepository.com/artifact/com.github.spt-oss/spt-cloud)
+[![javadoc](https://img.shields.io/badge/javadoc-spt--cloud-blue.svg)](https://www.javadoc.io/doc/com.github.spt-oss/spt-cloud)
 
-* Custom settings for Java projects
-* Checkstyle, Eclipse, etc.
+* Custom libraries for cloud projects
 
-## Usage
+## Modules
 
-### Eclipse
-
-* Clone the repository and import the settings into your Eclipse.
-
-	```bash
-	src/main/resources/
-	    spt/
-	        settings/
-	            checkstyle/
-	                checkstyle.xml # For Checkstyle
-	            eclipse/
-	                platform/      # For Eclipse platform
-	                project/       # For Eclipse projects
-	```
-
-### Maven
-
-* Add a dependency in your POM.
-
-	```xml
-	<plugin>
-		<groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-checkstyle-plugin</artifactId>
-		<configuration>
-			<configLocation>spt/settings/checkstyle/checkstyle.xml</configLocation>
-		</configuration>
-		<dependencies>
-			<dependency>
-				<groupId>com.puppycrawl.tools</groupId>
-				<artifactId>checkstyle</artifactId>
-				<version>X.X.X</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.spt-oss</groupId>
-				<artifactId>spt-java-settings</artifactId>
-				<version>X.X.X</version>
-			</dependency>
-		</dependencies>
-	</plugin>
-	```
+* [spt-cloud-slack](./spt-cloud-slack)
 
 ## License
 
