@@ -21,12 +21,12 @@ import spt.cloud.slack.SlackBotImpl;
 import spt.cloud.slack.SlackMessage;
 
 /**
- * {@link Test}: {@link SlackBotImpl}
+ * {@link Test}: {@link SlackBot}
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestApplication.class)
 @ActiveProfiles("test")
-public class SlackBotImplTests {
+public class SlackBotTests {
 	
 	/**
 	 * {@link TestProperties}
