@@ -18,6 +18,7 @@
 	<inceptionYear>2017</inceptionYear>
 
 	<modules>
+		<module>spt-cloud-google-analytics</module>
 		<module>spt-cloud-slack</module>
 	</modules>
 
@@ -28,12 +29,30 @@
 	</scm>
 
 	<properties>
+		<google-api-client.version>1.23.0</google-api-client.version>
+		<google-api-analytics.version>v4-rev124-1.23.0</google-api-analytics.version>
+		<google-http-client.version>1.23.0</google-http-client.version>
 		<spring-boot-plus.version>2.0.3.0-SNAPSHOT</spring-boot-plus.version>
 		<spt-java-commons.version>1.8.0.1</spt-java-commons.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>com.google.api-client</groupId>
+				<artifactId>google-api-client</artifactId>
+				<version>${google-api-client.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.apis</groupId>
+				<artifactId>google-api-services-analyticsreporting</artifactId>
+				<version>${google-api-analytics.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.http-client</groupId>
+				<artifactId>google-http-client</artifactId>
+				<version>${google-http-client.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>com.github.spt-oss</groupId>
 				<artifactId>spring-boot-starter-json-plus</artifactId>
