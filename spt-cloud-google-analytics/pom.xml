@@ -10,7 +10,7 @@
 		<relativePath>..</relativePath>
 	</parent>
 
-	<artifactId>spt-cloud-slack</artifactId>
+	<artifactId>spt-cloud-google-analytics</artifactId>
 	<packaging>jar</packaging>
 
 	<scm>
