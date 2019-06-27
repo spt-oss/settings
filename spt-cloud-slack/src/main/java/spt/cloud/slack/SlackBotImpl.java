@@ -1,42 +1,37 @@
 
 package spt.cloud.slack;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.io.IOException;
+import java.io.UncheckedIOException;
 
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
+import com.ullink.slack.simpleslackapi.SlackChatConfiguration;
+import com.ullink.slack.simpleslackapi.SlackMessageHandle;
+import com.ullink.slack.simpleslackapi.SlackPreparedMessage;
+import com.ullink.slack.simpleslackapi.SlackSession;
+import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
+import com.ullink.slack.simpleslackapi.replies.SlackMessageReply;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
 /**
  * {@link SlackBot} implementation
  */
+@RequiredArgsConstructor
 public class SlackBotImpl implements SlackBot {
 	
 	/**
-	 * {@link RestTemplate}
+	 * {@link SlackSession}
 	 */
-	private final RestTemplate restTemplate;
-	
-	/**
-	 * Token
-	 */
-	private final String token;
+	@NonNull
+	private final SlackSession session;
 	
 	/**
 	 * Channel
 	 */
+	@NonNull
 	private final String channel;
 	
 	/**
@@ -49,75 +44,67 @@ public class SlackBotImpl implements SlackBot {
 	/**
 	 * Constructor
 	 * 
-	 * @param builder {@link RestTemplateBuilder}
-	 * @param token {@link #token}
+	 * @param token token
 	 * @param channel {@link #channel}
 	 */
-	public SlackBotImpl(@NonNull RestTemplateBuilder builder, String token, String channel) {
+	public SlackBotImpl(String token, String channel) {
 		
-		this.restTemplate = builder.rootUri("https://slack.com/api").build();
-		this.token = token;
-		this.channel = channel;
+		this(SlackSessionFactory.createWebSocketSlackSession(token), channel);
+	}
+	
+	/**
+	 * Connect
+	 * 
+	 * @throws UncheckedIOException if failed to connect
+	 */
+	public void connect() throws UncheckedIOException {
+		
+		if (!this.session.isConnected()) {
+			
+			try {
+				
+				this.session.connect();
+			}
+			catch (IOException e) {
+				
+				throw new UncheckedIOException("Failed to connect", e);
+			}
+		}
+	}
+	
+	/**
+	 * Disconnect
+	 * 
+	 * @throws UncheckedIOException if failed to connect
+	 */
+	public void disconnect() throws UncheckedIOException {
+		
+		if (this.session.isConnected()) {
+			
+			try {
+				
+				this.session.disconnect();
+			}
+			catch (IOException e) {
+				
+				throw new UncheckedIOException("Failed to disconnect", e);
+			}
+		}
 	}
 	
 	@Override
-	public String postMessage(@NonNull SlackMessage message) throws RestClientException {
+	public String postMessage(String message) {
 		
-		Map<String, Object> params = new LinkedHashMap<>();
-		params.put("channel", this.channel);
-		params.put("text", message.getText());
-		params.put("as_user", this.asUser);
+		this.connect();
 		
-		SlackPostMessageResponse response = this.restTemplate.postForObject(
+		SlackMessageHandle<SlackMessageReply> handle = this.session.sendMessage(
 		/* @formatter:off */
-			"/chat.postMessage",
-			this.getHttpEntity(params),
-			SlackPostMessageResponse.class
+			this.session.findChannelByName(this.channel),
+			new SlackPreparedMessage.Builder().withMessage(message).build(),
+			SlackChatConfiguration.getConfiguration().asUser()
 			/* @formatter:on */
 		);
 		
-		return response.getTimestamp();
-	}
-	
-	/**
-	 * Get {@link HttpEntity}
-	 * 
-	 * @param params params
-	 * @return {@link HttpEntity}
-	 */
-	protected HttpEntity<?> getHttpEntity(Map<String, Object> params) {
-		
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.set(HttpHeaders.AUTHORIZATION, "Bearer " + this.token);
-		
-		return new HttpEntity<>(params, headers);
-	}
-	
-	/**
-	 * Slack response
-	 */
-	@Data
-	protected static class SlackResponse {
-		
-		/**
-		 * OK
-		 */
-		@JsonProperty("ok")
-		private boolean success;
-	}
-	
-	/**
-	 * {@link SlackResponse}: {@link SlackBot#postMessage(SlackMessage)}
-	 */
-	@Data
-	@EqualsAndHashCode(callSuper = false)
-	protected static class SlackPostMessageResponse extends SlackResponse {
-		
-		/**
-		 * Timestamp
-		 */
-		@JsonProperty("ts")
-		private String timestamp;
+		return handle.getReply().getTimestamp();
 	}
 }

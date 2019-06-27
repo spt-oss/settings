@@ -5,15 +5,16 @@
 
 	<parent>
 		<groupId>com.github.spt-oss</groupId>
-		<artifactId>spt-java-parent</artifactId>
-		<version>2.0.3.0-SNAPSHOT</version>
+		<artifactId>spt-oss-parent</artifactId>
+		<version>8.0.2-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>spt-cloud</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.1.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<description>Custom libraries for cloud projects</description>
+	<name>SPT Cloud</name>
+	<description>Client libraries for cloud services</description>
 	<url>https://github.com/spt-oss/spt-cloud</url>
 	<inceptionYear>2018</inceptionYear>
 
@@ -30,8 +31,9 @@
 
 	<properties>
 		<google-analytics.version>v4-rev124-1.23.0</google-analytics.version>
-		<spring-boot-plus.version>2.0.3.0-SNAPSHOT</spring-boot-plus.version>
-		<spt-java-commons.version>1.8.0.1</spt-java-commons.version>
+		<simple-slack-api.version>1.2.0</simple-slack-api.version>
+		<spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+		<spt-checkstyle.version>8.21.0-SNAPSHOT</spt-checkstyle.version>
 	</properties>
 
 	<dependencyManagement>
@@ -42,9 +44,14 @@
 				<version>${google-analytics.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.github.spt-oss</groupId>
-				<artifactId>spring-boot-starter-json-plus</artifactId>
-				<version>${spring-boot-plus.version}</version>
+				<groupId>com.ullink.slack</groupId>
+				<artifactId>simpleslackapi</artifactId>
+				<version>${simple-slack-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<version>${spring-boot.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -52,7 +59,7 @@
 	<repositories>
 		<repository>
 			<id>central</id>
-			<url>http://repo.maven.apache.org/maven2</url>
+			<url>https://repo.maven.apache.org/maven2</url>
 		</repository>
 		<repository>
 			<id>sonatype</id>
@@ -66,13 +73,13 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<configuration>
-					<configLocation>spt/settings/checkstyle/checkstyle.xml</configLocation>
+					<configLocation>spt/checkstyle/checks.xml</configLocation>
 				</configuration>
 				<dependencies>
 					<dependency>
 						<groupId>com.github.spt-oss</groupId>
-						<artifactId>spt-java-commons</artifactId>
-						<version>${spt-java-commons.version}</version>
+						<artifactId>spt-checkstyle</artifactId>
+						<version>${spt-checkstyle.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>

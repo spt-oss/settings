@@ -3,7 +3,7 @@ version: 2
 settings: &settings
     working_directory: ~/spt-cloud
     docker:
-        - image: circleci/openjdk:8-jdk
+        - image: circleci/openjdk:9.0.4-12-jdk-sid
 
 jobs:
     build:
@@ -12,7 +12,7 @@ jobs:
             - checkout:
                 path: ~/spt-cloud
             - run: |
-                curl -fsSL https://git.io/vpRJr | bash -s -- /usr/local/bin
+                curl -fsSL https://spt.page.link/ci-install-command-sh | bash -s -- git,mvn
             - restore_cache:
                 keys:
                     - cache-{{ .Branch }}
@@ -25,12 +25,16 @@ jobs:
                     - ~/.m2
                 key: cache-{{ .Branch }}
             - run: |
-                mvn-test
+                mvn-license-format
             - run: |
                 git-config-user "${GIT_USERNAME}" ${GIT_EMAIL}
             - run: |
-                curl -fsSL https://git.io/vpDIq | \
-                    bash -s -- https://git.io/vpDY5 ${OPENSSL_PASSWORD}
+                git-push-all 'Update license headers [ci skip]' || true
             - run: |
-                curl -fsSL https://git.io/vpDY9 | \
+                mvn-test
+            - run: |
+                curl -fsSL https://spt.page.link/ci-install-gpg-key-sh | \
+                    bash -s -- https://spt.page.link/oss-parent-pubring-gpg-enc ${OPENSSL_PASSWORD}
+            - run: |
+                curl -fsSL https://spt.page.link/oss-parent-mvn-deploy-sh | \
                     bash -s -- ${CIRCLE_BRANCH} ${GPG_PASSWORD} ${VERSION:-}

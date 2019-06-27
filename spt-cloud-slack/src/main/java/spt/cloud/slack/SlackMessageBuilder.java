@@ -1,16 +1,15 @@
 
-package spt.cloud.slack.util;
+package spt.cloud.slack;
 
 import lombok.NonNull;
-import spt.cloud.slack.SlackMessage;
 
 /**
- * {@link SlackMessage} builder
+ * Slack message builder
  */
 public class SlackMessageBuilder {
 	
 	/**
-	 * Delegate
+	 * Text
 	 */
 	private StringBuilder text = new StringBuilder();
 	
@@ -20,7 +19,7 @@ public class SlackMessageBuilder {
 	 * @param value value
 	 * @return {@link SlackMessageBuilder}
 	 */
-	public SlackMessageBuilder and(Object value) {
+	public SlackMessageBuilder append(Object value) {
 		
 		this.text.append(String.valueOf(value));
 		
@@ -35,19 +34,31 @@ public class SlackMessageBuilder {
 	 */
 	public SlackMessageBuilder append(@NonNull SlackMessageBuilder builder) {
 		
-		this.and(builder.toString());
+		this.append(builder.toString());
 		
 		return this;
 	}
 	
 	/**
-	 * Mention "@channel"
+	 * "@channel"
 	 * 
 	 * @return {@link SlackMessageBuilder}
 	 */
-	public SlackMessageBuilder mentionChannel() {
+	public SlackMessageBuilder atChannel() {
 		
-		this.and("<!channel>");
+		this.append("<!channel>");
+		
+		return this;
+	}
+	
+	/**
+	 * "@here"
+	 * 
+	 * @return {@link SlackMessageBuilder}
+	 */
+	public SlackMessageBuilder atHere() {
+		
+		this.append("<!here>");
 		
 		return this;
 	}
@@ -59,7 +70,7 @@ public class SlackMessageBuilder {
 	 */
 	public SlackMessageBuilder blockquote() {
 		
-		this.and("> ");
+		this.append(">");
 		
 		return this;
 	}
@@ -71,7 +82,7 @@ public class SlackMessageBuilder {
 	 */
 	public SlackMessageBuilder bold() {
 		
-		this.and("*");
+		this.append("*");
 		
 		return this;
 	}
@@ -83,7 +94,7 @@ public class SlackMessageBuilder {
 	 */
 	public SlackMessageBuilder italic() {
 		
-		this.and("_");
+		this.append("_");
 		
 		return this;
 	}
@@ -95,7 +106,7 @@ public class SlackMessageBuilder {
 	 */
 	public SlackMessageBuilder linefeed() {
 		
-		this.and("\n");
+		this.append("\n");
 		
 		return this;
 	}
@@ -107,7 +118,7 @@ public class SlackMessageBuilder {
 	 */
 	public SlackMessageBuilder minus() {
 		
-		this.and("-");
+		this.append("-");
 		
 		return this;
 	}
@@ -119,7 +130,7 @@ public class SlackMessageBuilder {
 	 */
 	public SlackMessageBuilder nop() {
 		
-		this.and("");
+		this.append("");
 		
 		return this;
 	}
@@ -131,7 +142,7 @@ public class SlackMessageBuilder {
 	 */
 	public SlackMessageBuilder plus() {
 		
-		this.and("+");
+		this.append("+");
 		
 		return this;
 	}
@@ -143,7 +154,7 @@ public class SlackMessageBuilder {
 	 */
 	public SlackMessageBuilder quote() {
 		
-		this.and("`");
+		this.append("`");
 		
 		return this;
 	}
@@ -155,7 +166,7 @@ public class SlackMessageBuilder {
 	 */
 	public SlackMessageBuilder space() {
 		
-		this.and(" ");
+		this.append(" ");
 		
 		return this;
 	}
@@ -163,10 +174,16 @@ public class SlackMessageBuilder {
 	/**
 	 * Build
 	 * 
-	 * @return {@link SlackMessage}
+	 * @return message
 	 */
-	public SlackMessage build() {
+	public String build() {
 		
-		return () -> this.text.toString();
+		return this.text.toString();
+	}
+	
+	@Override
+	public String toString() {
+		
+		return this.build();
 	}
 }
